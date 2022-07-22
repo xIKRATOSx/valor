@@ -8,7 +8,7 @@
 
 ## Introduction
 Valor Bot is a suite of open source software for WhatsApp Application based on Baileys WebSocket API.
-> WhatsApp Supported Version: 2.22.8.7
+> WhatsApp Supported Version: 2.22.8.7+
 
 _Some highlight features_:
 
@@ -39,10 +39,11 @@ _Some highlight features_:
 
 ### Test & Report Bug/Error/Issue or Feature Request?
 
-Test and Report Bug/Error/Issue or Feature Request on official Valor Bot repository under Issue section.
+Test and Bug Report or Feature Request on official Valor Bot repository under Issue section.
 
 [![Bot Test](https://img.shields.io/badge/WhatsApp-Bot_Test-darkgreen?logo=whatsapp)](https://chat.whatsapp.com/BqNITpkNqKuGkyMzGleZtI)
-[![Bug/Error/Issue Report](https://img.shields.io/badge/GitHub-Report-darkgreen?logo=github)](https://github.com/DineshValor/valor/issues)
+[![Bug/Error/Issue Report](https://img.shields.io/badge/GitHub-Bug/Error_Report-darkgreen?logo=github)](https://github.com/DineshValor/valor/issues/new?assignees=&labels=&template=bug_report.md&title=)
+[![Feature Request](https://img.shields.io/badge/GitHub-Feature_Request-darkgreen?logo=github)](https://github.com/DineshValor/valor/issues/new?assignees=&labels=&template=feature_request.md&title=)
 
 ## License
 

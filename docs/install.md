@@ -29,9 +29,10 @@ This allows for easier installation and Heroku is a server based, that's mean bo
 [![Heroku Tutorial Video](https://img.shields.io/badge/Heroku-Tutorial_Video_(upload_soon)-red?logo=heroku)]()
 
 **Required Buildpack:**
-- Nodejs
+- heroku/nodejs
+- heroku/python
 - https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest
-- https://github.com/DuckyTeam/heroku-buildpack-imagemagick
+- https://github.com/clhuang/heroku-buildpack-webp-binaries.git
 
 **To Install:**
 

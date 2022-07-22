@@ -4,7 +4,7 @@ If you have previously scanned QR code and already have `session.json` or `sessi
 
 ## Before you start: **_(necessary)_**
 
-- Edit and replace owner number `'919971107409'` with own number in `config.js` file
+- Edit Owner Number `'919971107409'` and Replace with Own Number in `config.js` file
 ```
 global.owner = [
   ['919971107409', 'Dinesh_Valor🇮🇳', true]

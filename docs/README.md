@@ -37,9 +37,9 @@ _Some highlight features_:
 - [Installation Instruction](https://dineshvalor.github.io/valor/install)
 - [Frequently Asked Questions](https://dineshvalor.github.io/valor/faq)
 
-### Test & Report Bug/Error/Issue or Feature Request?
+### Test & Bug/Error/Issue Report or Feature Request?
 
-Test and Bug Report or Feature Request on official Valor Bot repository under Issue section.
+Test and Bug/Error Report or Feature Request on official WhatsApp group and Valor Bot repository under Issue section.
 
 [![Bot Test](https://img.shields.io/badge/WhatsApp-Bot_Test-darkgreen?logo=whatsapp)](https://chat.whatsapp.com/BqNITpkNqKuGkyMzGleZtI)
 [![Bug/Error/Issue Report](https://img.shields.io/badge/GitHub-Bug/Error_Report-darkgreen?logo=github)](https://github.com/DineshValor/valor/issues/new?assignees=&labels=&template=bug_report.md&title=)

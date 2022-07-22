@@ -36,7 +36,7 @@ _Some highlight features_:
 ## Useful Links
 - [Installation Instruction](https://dineshvalor.github.io/valor/install)
 - [Frequently Asked Questions](https://dineshvalor.github.io/valor/faq)
-- [Troubleshooting] (https://dineshvalor.github.io/valor/troubleshooting)
+- [Troubleshooting](https://dineshvalor.github.io/valor/troubleshooting)
 
 ### Test & Bug/Error/Issue Report or Feature Request?
 

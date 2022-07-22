@@ -36,19 +36,6 @@ _Some highlight features_:
 ## Useful Links
 - [Installation Instruction](https://dineshvalor.github.io/valor/install)
 - [Frequently Asked Questions](https://dineshvalor.github.io/valor/faq)
-- [Troubleshoot](https://dineshvalor.github.io/puppeteer/troubleshooting)
-
-### Invite/Add Bot in your Group?
-~~1. Join [Valor Bot Invite](https://chat.whatsapp.com/BqNITpkNqKuGkyMzGleZtI) group.~~
-
-~~2. Type and send as shown below message in “Valor Bot Invite” group.~~ <br>
-~~#join <group_link>~~
-
-- ~~Example~~ <br>
-~~#join https://chat.whatsapp.com/BqNITpkNqKuGkyMzGleZtI~~
-> ~~(replace `‘https://chat.whatsapp.com/BqNITpkNqKuGkyMzGleZtI’` with your group link)~~
-
-> Note: **“Bot Invite In Group” Discontinued From 10th March 2022**
 
 ### Test & Report Bug/Error/Issue or Feature Request?
 

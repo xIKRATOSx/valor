@@ -63,7 +63,7 @@ conn.sendHydrated(jid, '<header>', '<footer>', '<buffer>', '<url-link>', '<url-n
 ```
 ```js
 // Example
-conn.sendHydrated(m.chat, 'Hello World!', '@Valor_Bot', 'https://telegra.ph/file/4769b73f3ffdea767d719.jpg', 'https://github.com/DineshValor/', 'GitHub', '+919971107409', 'Call',
+conn.sendHydrated(m.chat, 'Hello World!', '@Valor_Bot', 'https://raw.githubusercontent.com/DineshValor/valor/bot/docs/images/upi-qrcode.jpg', 'https://github.com/DineshValor/', 'GitHub', '+919971107409', 'Call',
 [
 ['Hello', 'hello'],
 ['Bye', 'bye']
@@ -81,7 +81,7 @@ conn.sendHydrated(jid, '<header>', '<footer>', '<buffer>', null, null, null, nul
 ```
 ```js
 // Example
-conn.sendHydrated(m.chat, 'Hello World!', '@Valor_Bot', 'https://telegra.ph/file/4769b73f3ffdea767d719.jpg', null, null, null, null,
+conn.sendHydrated(m.chat, 'Hello World!', '@Valor_Bot', 'https://raw.githubusercontent.com/DineshValor/valor/bot/docs/images/upi-qrcode.jpg', null, null, null, null,
 [
 ['Hello', 'hello'],
 ['Bye', 'bye']

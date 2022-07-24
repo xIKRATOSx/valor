@@ -42,7 +42,7 @@ _Some highlight features_:
 
 Test and Bug/Error Report or Feature Request on official WhatsApp group and Valor Bot repository under Issue section.
 
-[![Bot Test](https://img.shields.io/badge/WhatsApp-Bot_Test-darkgreen?logo=whatsapp)](https://chat.whatsapp.com/BqNITpkNqKuGkyMzGleZtI)
+[![Bot Test](https://img.shields.io/badge/WhatsApp-Bot_Test-darkgreen?logo=whatsapp)](https://chat.whatsapp.com/JITJxbGM7m7DbA1SNf8aN0)
 [![Bug/Error/Issue Report](https://img.shields.io/badge/GitHub-Bug/Error_Report-darkgreen?logo=github)](https://github.com/DineshValor/valor/issues/new?assignees=&labels=&template=bug_report.md&title=)
 [![Feature Request](https://img.shields.io/badge/GitHub-Feature_Request-darkgreen?logo=github)](https://github.com/DineshValor/valor/issues/new?assignees=&labels=&template=feature_request.md&title=)
 

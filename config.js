@@ -20,7 +20,7 @@ global.APIs = { // API Prefix
 }
 global.APIKeys = { // APIKey Here
   // 'https://website': 'apikey'
-  'https://api.xteam.xyz': '493053acc612476f',
+  'https://api.xteam.xyz': 'd90a9e986e18778b',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
   'https://api.zeks.xyz': 'apivinz',
   'https://pencarikode.xyz': 'pais',
@@ -29,7 +29,7 @@ global.APIKeys = { // APIKey Here
 
 // Sticker WM
 global.packname = 'Valor Bot'
-global.author = 'Dinesh_Valor🇮🇳'
+global.author = 'Dinesh Valor'
 
 global.multiplier = 69 // The higher, The harder levelup
 
@@ -37,11 +37,11 @@ global.rpg = {
   emoticon(string) {
     string = string.toLowerCase()
     let emot = {
-      level: '🎖️',
-      limit: '🎳',
+      level: '🧬',
+      limit: '🌌',
       health: '❤️',
       exp: '✉️',
-      money: '💰',
+      money: '💵',
       potion: '🥤',
       diamond: '💎',
       common: '📦',
@@ -74,6 +74,6 @@ global.rpg = {
 let file = fileURLToPath(import.meta.url)
 watchFile(file, () => {
   unwatchFile(file)
-  console.log(chalk.redBright("Updated - config.js"))
+  console.log(chalk.redBright("Updated - 'config.js'"))
   import(`${file}?update=${Date.now()}`)
 })

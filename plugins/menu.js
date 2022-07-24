@@ -1,38 +1,23 @@
+import db from '../lib/database.js'
 import { promises } from 'fs'
 import { join } from 'path'
 import { xpRange } from '../lib/levelling.js'
+import { plugins } from '../lib/plugins.js'
 import moment from 'moment-timezone'
-import fs from 'fs'
 let tags = {
-  'main': 'MAIN',
-  'game': 'GAME',
-  'rpg': 'RPG GAMES',
-  'xp': 'EXP & LIMIT',
-  'sticker': 'STICKER',
-  'kerang': 'KERANG AJAIB',
-  'quotes': 'QUOTES',
-  'group': 'GROUP',
-  'internet': 'INTERNET',
-  'anonymous': 'ANONYMOUS CHAT',
-  'nulis': 'MAGER-NULIS & LOGO',
-  'downloader': 'DOWNLOADER',
-  'tools': 'TOOLS',
-  'fun': 'FUN',
-  'owner': 'OWNER',
-  'advanced': 'ADVANCED',
-  'info': 'INFO',
+  
 }
 const defaultMenu = {
   before: `%readmore`.trimStart(),
   header: '╭─ *〘 %category 〙*\n│',
     body: '├ %cmd %islimit %isPremium',
   footer: '│\n╰────˧\n',
-  after: `  ${'```✨ʜᴏᴩᴇ ʏᴏᴜ ᴇɴᴊᴏʏɪɴɢ ᴛʜᴇ ʙᴏᴛ✨```'}`,
+   after: `  ${'```✨ʜᴏᴩᴇ ʏᴏᴜ ᴇɴᴊᴏʏɪɴɢ ᴛʜᴇ ʙᴏᴛ✨```'}`,
 }
-let handler = async (m, { conn, usedPrefix, __dirname }) => {
+let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
   try {
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
-    let { exp, limit, level, role } = global.db.data.users[m.sender]
+    let { exp, limit, level, role } = db.data.users[m.sender]
     let { min, xp, max } = xpRange(level, global.multiplier)
     let name = await conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
@@ -69,9 +54,9 @@ let handler = async (m, { conn, usedPrefix, __dirname }) => {
     }
     let muptime = clockString(_muptime)
     let uptime = clockString(_uptime)
-    let totalreg = Object.keys(global.db.data.users).length
-    let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
-    let help = Object.values(global.plugins).filter(plugin => !plugin.disabled).map(plugin => {
+    let totalreg = Object.keys(db.data.users).length
+    let rtotalreg = Object.values(db.data.users).filter(user => user.registered == true).length
+    let help = Object.values(plugins).filter(plugin => !plugin.disabled).map(plugin => {
       return {
         help: Array.isArray(plugin.tags) ? plugin.help : [plugin.help],
         tags: Array.isArray(plugin.tags) ? plugin.tags : [plugin.tags],
@@ -90,7 +75,7 @@ let handler = async (m, { conn, usedPrefix, __dirname }) => {
     let header = conn.menu.header || defaultMenu.header
     let body = conn.menu.body || defaultMenu.body
     let footer = conn.menu.footer || defaultMenu.footer
-    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : `Powered by https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
+    let after = conn.menu.after || (conn.user.jid == conn.user.jid ? '' : `Powered by https://wa.me/${conn.user.jid.split`@`[0]}`) + defaultMenu.after
     let _text = [
       before,
       ...Object.keys(tags).map(tag => {
@@ -111,7 +96,7 @@ let handler = async (m, { conn, usedPrefix, __dirname }) => {
     let text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
     let replace = {
       '%': '%',
-      p: usedPrefix, uptime, muptime,
+      p: _p, uptime, muptime,
       me: conn.getName(conn.user.jid),
       npmname: _package.name,
       npmdesc: _package.description,
@@ -134,16 +119,16 @@ let handler = async (m, { conn, usedPrefix, __dirname }) => {
 ${wish()}, ${name}
 
 *⇓ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ʟɪsᴛᴇᴅ ʙᴇʟᴏᴡ ⇓*`, text.trim(), `${timeimg()}`, [
-      [`ʙᴏᴛ ɪɴғᴏ`, `${usedPrefix}botinfo`],
-      [`ᴩʀᴏғɪʟᴇ`, `${usedPrefix}profile`]
+      ['ʙᴏᴛ ɪɴғᴏ', `${_p}botinfo`],
+      ['ᴩʀᴏғɪʟᴇ', `${_p}profile`]
     ], m, {asLocation: true})
   } catch (e) {
-    conn.reply(m.chat, 'Maaf, menu sedang error', m)
+    conn.reply(m.chat, 'Sorry, something is error in menu.js', m)
     throw e
   }
 }
 handler.help = ['menu']
-handler.tags = ['main']
+handler.tags = ['MAIN']
 handler.command = /^(menu|help|valor|command|commands)$/i
 
 handler.exp = 3

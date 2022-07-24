@@ -17,8 +17,8 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
     ['ʏᴏᴜᴛᴜʙᴇ sᴇᴀʀᴄʜ 🔎', `${usedPrefix}yts ${url}`]
   ], m)
 }
-handler.help = ['play', 'play2'].map(v => v + ' <pencarian>')
-handler.tags = ['downloader']
+handler.help = ['play'].map(v => v + ' <name>')
+handler.tags = ['DOWNLOADER']
 handler.command = /^play2?$/i
 
 handler.exp = 0

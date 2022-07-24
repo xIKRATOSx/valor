@@ -7,7 +7,7 @@
 // Syntax
 conn.sendButton(
       jid, // jid of the user to send the message to
-      text, // text to send
+      header, // text to send
       foooter, // footer to send
       buffer, // buffer to send (optional), if you want to send button image, location, etc
       buttons, // buttons to send, example [['text1', 'id1'], ['text2', 'id2']]
@@ -17,7 +17,7 @@ conn.sendButton(
 ```
 ```js
 // Code Format
-conn.sendButton(jid, '<text>', '<footer>', '<buffer>',
+conn.sendButton(jid, '<header>', '<footer>', '<buffer>',
 [
 ['<BUTTON-1>', 'button-1'],
 ['<BUTTON-2>', '<button-2>'],
@@ -40,7 +40,7 @@ conn.sendButton(m.chat, 'Hello World!', 'By Valor_Bot', 'valor.jpg',
 // Syntax
 conn.sendHydrated(
       jid, // jid of the user to send the message to
-      text, // text to send
+      header, // text to send
       foooter, // footer to send
       buffer, // buffer to send (optional), if you want to send button image, location, etc
       url-link, // url link as a button to send
@@ -54,7 +54,7 @@ conn.sendHydrated(
 ```
 ```js
 // Code Format
-conn.sendHydrated(m.chat, '<header>', '<footer>', '<buffer>', '<url-link>', '<url-name>', '<contact-number>', '<contact-name>',
+conn.sendHydrated(jid, '<header>', '<footer>', '<buffer>', '<url-link>', '<url-name>', '<contact-number>', '<contact-name>',
 [
 ['<BUTTON-1>', 'button-1'],
 ['<BUTTON-2>', '<button-2>'],
@@ -72,7 +72,7 @@ conn.sendHydrated(m.chat, 'Hello World!', '@Valor_Bot', 'https://telegra.ph/file
 Tip: Want to use `conn.sendHydrated` without url/call button, just replace with `null`.
 ```js
 // Code Format
-conn.sendHydrated(m.chat, '<header>', '<footer>', '<buffer>', null, null, null, null,
+conn.sendHydrated(jid, '<header>', '<footer>', '<buffer>', null, null, null, null,
 [
 ['<BUTTON-1>', 'button-1'],
 ['<BUTTON-2>', '<button-2>'],

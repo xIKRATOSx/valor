@@ -4,8 +4,8 @@ import { youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper'
 import db from '../lib/database.js'
 
 let limit = 80
-let handler = async (m, { conn, args, isPrems, isOwner }) => {
-  if (!args || !args[0]) throw 'Uhm... urlnya mana?'
+let handler = async (m, { conn, args, isPrems, isOwner, command, usedPrefix }) => {
+  if (!args || !args[0]) throw `Type "${usedPrefix}${command} <url>" to download audio.\n\nFor Example:\n${usedPrefix}${command} https://youtu.be/iHdYhdDg1Co`
   let chat = db.data.chats[m.chat]
   const isY = /y(es)/gi.test(args[1])
   const { thumbnail, audio: _audio, title } = await youtubedl(args[0]).catch(async _ => await youtubedlv2(args[0])).catch(async _ => await youtubedlv3(args[0]))
@@ -27,22 +27,17 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
       lastError = e
     }
   }
-  if ((!(source instanceof ArrayBuffer) || !link || !res.ok) && !isLimit) throw 'Error: ' + (lastError || 'Can\'t download audio')
-  if (!isY && !isLimit) await conn.sendFile(m.chat, thumbnail, 'thumbnail.jpg', `
-*📌Title:* ${title}
-*🗎 Filesize:* ${audio.fileSizeH}
-*${isLimit ? 'Pakai ' : ''}Link:* ${link}
-`.trim(), m)
+  if ((!(source instanceof ArrayBuffer) || !link || !res.ok) && !isLimit) throw 'Please input valid url/link.\n\n' + (lastError || `For Example:\n${usedPrefix}${command} https://youtu.be/iHdYhdDg1Co`)
   if (!isLimit) await conn.sendFile(m.chat, source, title + '.mp3', `
-*📌Title:* ${title}
-*🗎 Filesize:* ${audio.fileSizeH}
+🔖 ᴛɪᴛʟᴇ: ${title}
+📁 ғɪʟᴇ sɪᴢᴇ: ${audio.fileSizeH}
 `.trim(), m, null, {
     asDocument: chat.useDocument
   })
 }
-handler.help = ['mp3', 'a'].map(v => 'yt' + v + ` <url> <without message>`)
-handler.tags = ['downloader']
-handler.command = /^yt(a|mp3)$/i
+handler.help = ['yta'].map(v => v + ` <url>`)
+handler.tags = ['DOWNLOADER']
+handler.command = /^(yta|ytaudio|ytmp3)$/i
 
 handler.exp = 0
 

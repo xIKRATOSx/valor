@@ -4,7 +4,7 @@ import db from '../lib/database.js'
 
 let limit = 80
 let handler = async (m, { conn, args, isPrems, isOwner }) => {
-  if (!args || !args[0]) throw 'Uhm... urlnya mana?'
+  if (!args || !args[0]) throw `Type "${usedPrefix}${command} <url>" to download video.\n\nFor Example:\n${usedPrefix}${command} https://youtu.be/iHdYhdDg1Co`
   let chat = db.data.chats[m.chat]
   const isY = /y(es)/gi.test(args[1])
   const { thumbnail, video: _video, title } = await youtubedl(args[0]).catch(async _ => await youtubedlv2(args[0])).catch(async _ => await youtubedlv3(args[0]))
@@ -26,26 +26,21 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
       lastError = e
     }
   }
-  if ((!(source instanceof ArrayBuffer) || !link || !res.ok) && !isLimit) throw 'Error: ' + (lastError || 'Can\'t download video')
-  if (!isY && !isLimit) await conn.sendFile(m.chat, thumbnail, 'thumbnail.jpg', `
-*📌Title:* ${title}
-*🗎 Filesize:* ${video.fileSizeH}
-*${isLimit ? 'Pakai ' : ''}Link:* ${link}
-`.trim(), m)
+  if ((!(source instanceof ArrayBuffer) || !link || !res.ok) && !isLimit) throw 'Please input valid url/link.\n\n' + (lastError || `For Example:\n${usedPrefix}${command} https://youtu.be/iHdYhdDg1Co`)
   let _thumb = {}
   try { _thumb = { thumbnail: await (await fetch(thumbnail)).buffer() } }
   catch (e) { }
   if (!isLimit) await conn.sendFile(m.chat, link, title + '.mp4', `
-*📌Title:* ${title}
-*🗎 Filesize:* ${video.fileSizeH}
+🔖 ᴛɪᴛʟᴇ: ${title}
+📁 ғɪʟᴇ sɪᴢᴇ: ${video.fileSizeH}
 `.trim(), m, false, {
     ..._thumb,
     asDocument: chat.useDocument
   })
 }
-handler.help = ['mp4', 'v', ''].map(v => 'yt' + v + ` <url> <without message>`)
-handler.tags = ['downloader']
-handler.command = /^yt(v|mp4)?$/i
+handler.help = ['ytv'].map(v => v + ` <url>`)
+handler.tags = ['DOWNLOADER']
+handler.command = /^(ytv|ytvideo|ytmp4)$/i
 
 handler.exp = 0
 

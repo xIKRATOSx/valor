@@ -1,14 +1,15 @@
 import { youtubeSearch } from '@bochilteam/scraper'
-let handler = async (m, { text }) => {
-  if (!text) throw 'Cari apa?'
+let handler = async (m, { text, command, usedPrefix }) => {
+  if (!text) throw `Type "${usedPrefix}${command} <name>" to search audio/video.\n\nFor Example:\n${usedPrefix}${command} Bolenath Ji`
   const { video, channel } = await youtubeSearch(text)
   let teks = [...video, ...channel].map(v => {
     switch (v.type) {
       case 'video': return `
-📌 *${v.title}* (${v.url})
-⌚ Duration: ${v.durationH}
-⏲️ Uploaded ${v.publishedTime}
-👁️ ${v.view} views
+🔖 ᴛɪᴛʟᴇ: *${v.title}*
+🔗 ᴜʀʟ: ${v.url}
+⌛ ᴅᴜʀᴀᴛɪᴏɴ: ${v.durationH}
+📡 ᴩᴜʙʟɪsʜᴇᴅ: ${v.publishedTime}
+👀️ ᴠɪᴇᴡs: ${v.view}
       `.trim()
       case 'channel': return `
 📌 *${v.channelName}* (${v.url})
@@ -19,8 +20,8 @@ let handler = async (m, { text }) => {
   }).filter(v => v).join('\n\n========================\n\n')
   m.reply(teks)
 }
-handler.help = ['', 'earch'].map(v => 'yts' + v + ' <pencarian>')
-handler.tags = ['tools']
-handler.command = /^yts(earch)?$/i
+handler.help = ['yts'].map(v => v + ' <name>')
+handler.tags = ['TOOLS']
+handler.command = /^(yts|ytsearch)$/i
 
 export default handler

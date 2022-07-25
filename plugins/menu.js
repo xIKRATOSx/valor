@@ -4,15 +4,13 @@ import { join } from 'path'
 import { xpRange } from '../lib/levelling.js'
 import { plugins } from '../lib/plugins.js'
 import moment from 'moment-timezone'
-let tags = {
-  
-}
+let tags = {}
 const defaultMenu = {
   before: `%readmore`.trimStart(),
   header: '╭─ *〘 %category 〙*\n│',
     body: '├ %cmd %islimit %isPremium',
   footer: '│\n╰────˧\n',
-   after: `  ${'```✨ʜᴏᴩᴇ ʏᴏᴜ ᴇɴᴊᴏʏɪɴɢ ᴛʜᴇ ʙᴏᴛ✨```'}`,
+   after: `*ᴠᴀʟᴏʀ ᴠᴇʀsɪᴏɴ:* %version`,
 }
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
   try {
@@ -128,7 +126,7 @@ ${wish()}, ${name}
   }
 }
 handler.help = ['menu']
-handler.tags = ['MAIN']
+handler.tags = ['Main']
 handler.command = /^(menu|help|valor|command|commands)$/i
 
 handler.exp = 3

@@ -11,7 +11,7 @@ conn.sendHydrated(m.chat,
 ★ ᴄʟɪᴄᴋ ᴏɴ ᴩᴀʏᴩᴀʟ ʟɪɴᴋ ᴛᴏ ᴍᴀᴋᴇ ɪɴᴛᴇʀɴᴀᴛɪᴏɴᴀʟ ᴛʀᴀɴsᴀᴄᴛɪᴏɴ.`, './media/donate.jpg', 'https://www.paypal.me/DineshValor', 'PᴀʏPᴀʟ', null, null, [[`ᴍᴇɴᴜ`, `${usedPrefix}menu`]], m, {asLocation: true})
 }
 handler.help = ['donate']
-handler.tags = ['info']
+handler.tags = ['Info']
 handler.command = /^dona(te|si)$/i
 
 export default handler

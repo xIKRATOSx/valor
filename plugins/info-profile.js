@@ -13,26 +13,28 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
         enabled: !plugin.disabled,
       }
     })
-    conn.sendButton(m.chat, 
-    '*––––––『 PROFILE 』––––––*', 
-`🧑🏻‍🏫 ɴᴀᴍᴇ: ${name}
-🎳 ʟɪᴍɪᴛ: ${limit}
-🎗️ ʀᴏʟᴇ: ${role}
-🎖️ ʟᴇᴠᴇʟ: ${level} ﹙${exp - min} / ${xp}﹚
-☕ ᴛᴏᴛᴀʟ xᴩ: ${exp}
+    const header = `*––––––『 PROFILE 』––––––*`
+    const footer = `
+🧑🏻‍🏫 ɴᴀᴍᴇ: *${name}*
+🎳 ʟɪᴍɪᴛ: *${limit}*
+🎗️ ʀᴏʟᴇ: *${role}*
+🎖️ ʟᴇᴠᴇʟ: *${level} ﹙${exp - min} / ${xp}﹚*
+☕ ᴛᴏᴛᴀʟ xᴩ: *${exp}*
 〽️ ᴩʀᴇғɪx: *${usedPrefix}*
 ––––––––––––––––––––––––
-💁🏻‍♂ ᴛɪᴩ :
-⮕ ᴛᴏ ʟᴇᴠᴇʟ ᴜᴩ:
+⮕ ʟᴇᴠᴇʟ ᴜᴩ:
 ${usedPrefix}levelup
-`.trim(), './media/profile.jpg', [
+`
+    const buffer = './media/profile.jpg'
+    const button = [
 [`ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ`, `${usedPrefix}leaderboard`],
 [`ɪɴᴠᴇɴᴛᴏʀʏ`, `${usedPrefix}inventory`]
-], m, {asLocation: true})
+]
+    conn.sendButton(m.chat, header, footer.trim(), buffer, button, m, {asLocation: true})
 }
 
 handler.help = ['profile']
 handler.tags = ['Info']
-handler.command = /^(profile|pf|userprofile|up)$/i
+handler.command = /^(profile|pf|upf|userpf|userprofile|up)$/i
 
 export default handler

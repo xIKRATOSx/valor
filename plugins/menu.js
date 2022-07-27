@@ -8,7 +8,7 @@ let tags = {}
 const defaultMenu = {
   before: `%readmore`.trimStart(),
   header: '╭─ *〘 %category 〙*\n│',
-    body: '├ %cmd %islimit %isPremium',
+    body: '├> %cmd %islimit %isPremium',
   footer: '│\n╰────˧\n',
    after: `*ᴠᴀʟᴏʀ ᴠᴇʀsɪᴏɴ:* %version`,
 }
@@ -111,15 +111,16 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
     const menu = './media/menu.jpg'
     const valor = './media/valor.jpg'
-    conn.sendButton(m.chat,
-`*–––––––『 MENU 』–––––––*
+    const header1 = `*–––––––『 MENU 』–––––––*
 
 ${wish()}, ${name}
 
-*⇓ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ʟɪsᴛᴇᴅ ʙᴇʟᴏᴡ ⇓*`, text.trim(), `${timeimg()}`, [
+*⇓ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ʟɪsᴛᴇᴅ ʙᴇʟᴏᴡ ⇓*`
+    const button = [
       ['ʙᴏᴛ ɪɴғᴏ', `${_p}botinfo`],
       ['ᴩʀᴏғɪʟᴇ', `${_p}profile`]
-    ], m, {asLocation: true})
+    ]
+    conn.sendButton(m.chat, header1, text.trim(), `${timeimg()}`, button, m, {asLocation: true})
   } catch (e) {
     conn.reply(m.chat, 'Sorry, something is error in menu.js', m)
     throw e

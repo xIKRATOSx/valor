@@ -4,7 +4,14 @@ import { stickerLine, stickerTelegram } from '@bochilteam/scraper'
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     // TODO: add stickerly
     const isTele = /tele/i.test(command)
-    if (!args[0]) throw `*This command to retrieve stickers from ${isTele ? 'Tele.' : 'Line.'}*\n\nFor Example:\n${usedPrefix + command} naruto`
+    if (!args[0]) throw `*This command to retrieve stickers from ${isTele ? 'Tele.' : 'Search.*'}
+Note: not accurate result.
+–––––––––––––––––––––––––
+⮕ ᴜsᴀɢᴇ:
+${usedPrefix + command} <name>
+
+★ ᴇxᴀᴍᴩʟᴇ:
+${usedPrefix + command} naruto`
     const json = await (isTele ? stickerTelegram : stickerLine)(args[0])
     m.reply(`
 *Total sticker:* ${(json[0]?.stickers || json).length}
@@ -14,7 +21,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         await conn.sendFile(m.chat, stiker, 'sticker.webp', '', m).catch(console.error)
         await delay(1500)
     }
-
 }
 handler.help = ['stikersearch <name>']
 handler.tags = ['Sticker']

@@ -11,7 +11,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (/webp|image|video/g.test(mime)) {
       if (/video/g.test(mime)) if ((q.msg || q).seconds > 11) return m.reply('10 seconds max!')
       let img = await q.download?.()
-      if (!img) throw `Tag image/video/sticker with command *_"${usedPrefix + command}"_*`
+      if (!img) throw `Tag image/gif/video with command *_"${usedPrefix + command}"_*`
       let out
       try {
         stiker = await sticker(img, false, global.packname, global.author)
@@ -38,7 +38,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     else throw `Tag image/video/sticker with command *_"${usedPrefix + command}"_*`
   }
 }
-handler.help = ['sticker (tag media)', 'sticker <url>']
+handler.help = ['sticker (tag image/gif/video)', 'sticker <url>']
 handler.tags = ['Sticker']
 handler.command = /^(s|sticker|sgif|stickergif)$/i
 

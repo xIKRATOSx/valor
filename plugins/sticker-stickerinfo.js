@@ -12,6 +12,6 @@ let handler = async (m, { usedPrefix, command }) => {
 handler.help = ['stickerinfo (tag sticker)']
 handler.tags = ['Sticker']
 
-handler.command = /^(sinfo|stickerinfo)$/i
+handler.command = /^(si|sinfo|stickerinfo)$/i
 
 export default handler

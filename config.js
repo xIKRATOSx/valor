@@ -6,18 +6,8 @@ global.owner = [
   ['919971107409', 'Valor_Bot', true]
   // [number, dia creator/owner?, dia developer?]
 ] // Put your number here
-global.mods = [
-    ['919971107409', 'Valor_Bot'],
-    ['919107910799', 'ᴅɪɴᴇsʜ_ᴠᴀʟᴏʀ']
-    ] // Want some help?
-global.prems = [
-    ['919971107409', 'Valor_Bot'],
-    ['919107910799', 'ᴅɪɴᴇsʜ_ᴠᴀʟᴏʀ'],
-    ['918285555836', 'Akshiv Kumar'],
-    ['919891357354', 'Parvez Alam'],
-    ['918708840035', 'Akshay Kumar'],
-    ['917836092986', 'Surya Verma']
-    ] // Premium user has unlimited limit
+global.mods = [] // Want some help?
+global.prems = [] // Premium user has unlimited limit
 global.APIs = { // API Prefix
   // name: 'https://website'
   nrtm: 'https://nurutomo.herokuapp.com',

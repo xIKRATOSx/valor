@@ -247,7 +247,7 @@ export async function handler(chatUpdate) {
                 if (!('isBanned' in chat))
                     chat.isBanned = false
                 if (!('welcome' in chat))
-                    chat.welcome = false
+                    chat.welcome = true
                 if (!('detect' in chat))
                     chat.detect = false
                 if (!('sWelcome' in chat))
@@ -271,7 +271,7 @@ export async function handler(chatUpdate) {
             } else
                 db.data.chats[m.chat] = {
                     isBanned: false,
-                    welcome: false,
+                    welcome: true,
                     detect: false,
                     sWelcome: '',
                     sBye: '',
@@ -715,6 +715,6 @@ global.dfail = (type, m, conn) => {
 let file = Helper.__filename(import.meta.url, true)
 watchFile(file, async () => {
     unwatchFile(file)
-    console.log(chalk.redBright("Update - 'handler.js'"))
+    console.log(chalk.redBright("Updated - 'handler.js'"))
     if (Connection.reload) console.log(await Connection.reload(await Connection.conn))
 })

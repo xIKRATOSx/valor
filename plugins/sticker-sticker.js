@@ -9,9 +9,9 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ''
     if (/webp|image|video/g.test(mime)) {
-      if (/video/g.test(mime)) if ((q.msg || q).seconds > 11) return m.reply('10 seconds max!')
+      if (/video/g.test(mime)) if ((q.msg || q).seconds > 11) return m.reply('10 sᴇᴄᴏɴᴅs ᴍᴀx ᴅᴜʀsᴛɪᴏɴ﹗')
       let img = await q.download?.()
-      if (!img) throw `Tag image/gif/video with command *_"${usedPrefix + command}"_*`
+      if (!img) throw `ᴛᴀɢ ᴀ ɪᴍᴀɢᴇ ᴏʀ ɢɪғ ᴏʀ ᴠɪᴅᴇᴏ ᴡɪᴛʜ ᴄᴏᴍᴍᴀɴᴅ *_"${usedPrefix + command}"_*`
       let out
       try {
         stiker = await sticker(img, false, global.packname, global.author)
@@ -28,14 +28,21 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       }
     } else if (args[0]) {
       if (isUrl(args[0])) stiker = await sticker(false, args[0], global.packname, global.author)
-      else return m.reply('Invalid URL!')
+      else return m.reply(`*ɪɴᴠᴀʟɪᴅ ᴜʀʟ ᴏʀ ʟɪɴᴋ﹗*
+
+===========================
+★ ᴜsᴀɢᴇ:
+${usedPrefix + command} <url>
+
+★ ᴇxᴀᴍᴩʟᴇ:
+${usedPrefix + command} https://raw.githubusercontent.com/DineshValor/valor/bot/docs/images/upi-qrcode.jpg`)
     }
   } catch (e) {
     console.error(e)
     if (!stiker) stiker = e
   } finally {
     if (stiker) conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
-    else throw `Tag image/video/sticker with command *_"${usedPrefix + command}"_*`
+    else throw `ᴛᴀɢ ᴀ ɪᴍᴀɢᴇ ᴏʀ ɢɪғ ᴏʀ ᴠɪᴅᴇᴏ ᴡɪᴛʜ ᴄᴏᴍᴍᴀɴᴅ *_"${usedPrefix + command}"_*`
   }
 }
 handler.help = ['sticker (tag image/gif/video)', 'sticker <url>']

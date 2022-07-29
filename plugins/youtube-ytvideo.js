@@ -1,10 +1,17 @@
+import db from '../lib/database.js'
 import fetch from 'node-fetch'
 import { youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper'
-import db from '../lib/database.js'
 
 let limit = 80
 let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner }) => {
-  if (!args || !args[0]) throw `Type *_"${usedPrefix}${command} <url>"_* to download video.\n\nFor Example:\n${usedPrefix}${command} https://youtu.be/iHdYhdDg1Co`
+  if (!args || !args[0]) throw `*ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ʀᴇᴛʀɪᴇᴠᴇ ᴠɪᴅᴇᴏ ғʀᴏᴍ ʏᴏᴜᴛᴜʙᴇ sᴇʀᴠᴇʀ.*
+
+===========================
+★ ᴜsᴀɢᴇ:
+${usedPrefix + command} <url>
+
+★ ᴇxᴀᴍᴩʟᴇ:
+${usedPrefix + command} https://youtu.be/iHdYhdDg1Co`
   let chat = db.data.chats[m.chat]
   const isY = /y(es)/gi.test(args[1])
   const { thumbnail, video: _video, title } = await youtubedl(args[0]).catch(async _ => await youtubedlv2(args[0])).catch(async _ => await youtubedlv3(args[0]))
@@ -26,7 +33,14 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner }) =
       lastError = e
     }
   }
-  if ((!(source instanceof ArrayBuffer) || !link || !res.ok) && !isLimit) throw 'Please input valid url/link.\n\n' + (lastError || `For Example:\n${usedPrefix}${command} https://youtu.be/iHdYhdDg1Co`)
+  if ((!(source instanceof ArrayBuffer) || !link || !res.ok) && !isLimit) throw `*ɪɴᴠᴀʟɪᴅ ᴜʀʟ ᴏʀ ʟɪɴᴋ﹗*
+
+===========================
+★ ᴜsᴀɢᴇ:
+${usedPrefix + command} <url>
+
+★ ᴇxᴀᴍᴩʟᴇ:
+${usedPrefix + command} https://youtu.be/iHdYhdDg1Co`
   let _thumb = {}
   try { _thumb = { thumbnail: await (await fetch(thumbnail)).buffer() } }
   catch (e) { }
@@ -40,10 +54,9 @@ let handler = async (m, { conn, args, usedPrefix, command, isPrems, isOwner }) =
 }
 handler.help = ['ytvideo'].map(v => v + ` <url>`)
 handler.tags = ['YouTube']
-handler.command = /^(ytv|ytvideo|ytmp4)$/i
+handler.command = /^(ytv|ytvideo|ytmp4|video)$/i
 
 handler.exp = 0
 
 
 export default handler
-

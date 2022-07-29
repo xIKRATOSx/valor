@@ -2,7 +2,7 @@ import { format } from 'util'
 const { default: { Image } } = await import('node-webpmux')
 
 let handler = async (m, { usedPrefix, command }) => {
-    if (!m.quoted) return m.reply(`Tag sticker with command *_"${usedPrefix + command}"_*`)
+    if (!m.quoted) return m.reply(`ᴛᴀɢ ᴀ sᴛɪᴄᴋᴇʀ ᴡɪᴛʜ ᴄᴏᴍᴍᴀɴᴅ *_"${usedPrefix + command}"_*`)
     if (/sticker/.test(m.quoted.mtype)) {
         let img = new Image()
         await img.load(await m.quoted.download())

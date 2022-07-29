@@ -3,18 +3,14 @@ const cooldown = 120000
 let handler = async(m, { conn, usedPrefix, text, participants }) => {
     let user = db.data.users[m.sender]
     let timers = (cooldown - (new Date - user.lasttag))
-    const header = `*–––––『 COOLDOWN 』–––––*`
-    const footer = `
-*ᴛᴀɢ-ᴀʟʟ* ʀᴇᴄᴇɴᴛʟʏ ᴜsᴇᴅ, ᴩʟᴇᴀsᴇ ᴡᴀɪᴛ ᴛɪʟʟ ᴄᴏᴏʟᴅᴏᴡɴ ғɪɴɪsʜ.
+    if (new Date - user.lasttag <= cooldown) return conn.sendButton(m.chat, `*–––––『 COOLDOWN 』–––––*`, `
+ᴛᴀɢ-ᴀʟʟ ʀᴇᴄᴇɴᴛʟʏ ᴜsᴇᴅ﹗ᴩʟᴇᴀsᴇ ᴡᴀɪᴛ ᴛɪʟʟ ᴄᴏᴏʟᴅᴏᴡɴ ғɪɴɪsʜ.
 
-⏱️ ${timers.toTimeString()}
-`
-    const buffer = './media/cooldown.jpg'
-    const button = [
+*⏱️ ${timers.toTimeString()}*
+`.trim(), `./media/cooldown.jpg`, [
 [`ᴏᴋ 👌`, `${usedPrefix}ok`]
-]
-    if (new Date - user.lasttag <= cooldown) return conn.sendButton(m.chat, header, footer.trim(), buffer, button, m, {asLocation: true})
-  let teks = `${text ? text : '*––––––『 Tag All 』––––––*'}\n\n${readMore}`
+], m, {asLocation: true})
+  let teks = `${text ? text : '*––––––『 TAG ALL 』––––––*'}\n\n${readMore}`
 		      	for (let mem of participants) {
 		            teks += `\n@${mem.id.split('@')[0]}`
 				}

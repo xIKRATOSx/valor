@@ -10,6 +10,8 @@
 Valor Bot is a suite of open source software for WhatsApp Application based on Baileys WebSocket API.
 > WhatsApp Supported Version: 2.22.8.7+
 
+> WhatsApp Beta - Not Supported
+
 _Some highlight features_:
 
 - **Downloader**: Download Audio/Video from YouTube, TikTok, Instagram, Facebook, etc

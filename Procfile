@@ -1,1 +1,1 @@
-worker: node . --db 'mongodb+srv://DineshValor:4972@valor-whatsapp-bot-md.vn0pr.mongodb.net/Valor-Whatsapp-Bot-Md?retryWrites=true&w=majority' --autocleartmp
+worker: node . --db 'mongodb+srv://DineshValor:1234@valor-bot.vuaee6p.mongodb.net/valor-db-public?retryWrites=true&w=majority' --autocleartmp

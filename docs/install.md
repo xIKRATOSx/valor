@@ -102,6 +102,15 @@ node .
 2. Hurray! Bot successfully installed and ready to use. Type `.menu` or `.help` in whatsapp chat to access bot menu
 > ⚠️ If any error comes, feel free raise an [Issue](https://github.com/DineshValor/valor/issues)
 
+## **Replit (Server)** - [Recommend]
+
+This allows for easier installation and Replit is a server based, that's mean bot keep active for 24×7 without your device up for all time with help of uptimerobot.
+
+[![Heroku Tutorial Video](https://img.shields.io/badge/Replit-Tutorial_Video_(upload_soon)-red?logo=heroku)]()
+
+**To Install:**
+1. (Steps will add soon...)
+
 ## Optional Commands
 
 **Usage: `node . [--options]`**

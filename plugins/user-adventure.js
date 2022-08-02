@@ -5,13 +5,17 @@ let handler = async (m, { conn, usedPrefix }) => {
     let timers = (cooldown - (new Date - user.lastadventure))
     if (user.health < 80) return conn.sendButton(m.chat, `*–––––『 LOW HEALTH 』–––––*`, `
 ʏᴏᴜʀ ʜᴇᴀʟᴛʜ ɪs ʙᴇʟᴏᴡ *80*﹗ᴩʟᴇᴀsᴇ ʜᴇᴀʟ ❤ ғɪʀsᴛ ᴛᴏ ᴀᴅᴠᴇɴᴛᴜʀᴇ ᴀɢᴀɪɴ.
+
+===========================
 `.trim(), `./media/lowhealth.jpg`, [
 [`ʜᴇᴀʟ ❤`, `${usedPrefix}heal`]
 ], m, {asLocation: true})
     if (new Date - user.lastadventure <= cooldown) return conn.sendButton(m.chat, `*–––––『 COOLDOWN 』–––––*`, `
-ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ *ᴀᴅᴠᴇɴᴛᴜʀᴇ*, ᴩʟᴇᴀsᴇ ᴡᴀɪᴛ ᴛɪʟʟ ᴄᴏᴏʟᴅᴏᴡɴ ғɪɴɪsʜ.
+ʏᴏᴜ'ᴠᴇ ʀᴇᴄᴇɴᴛʟʏ *ᴀᴅᴠᴇɴᴛᴜʀᴇ*, ᴩʟᴇᴀsᴇ ᴡᴀɪᴛ ᴛɪʟʟ ᴄᴏᴏʟᴅᴏᴡɴ ғɪɴɪsʜ.
 
 ⏱️ ${timers.toTimeString()}
+
+===========================
 `.trim(), `./media/cooldown.jpg`, [
 [`ᴏᴋ 👌`, `${usedPrefix}ok`]
 ], m, {asLocation: true})
@@ -20,7 +24,7 @@ let handler = async (m, { conn, usedPrefix }) => {
     for (const lost in rewards.lost) if (user[lost]) {
         const total = rewards.lost[lost].getRandom()
         user[lost] -= total * 1
-        if (total) text += `\n${global.rpg.emoticon(lost)}${lost}: ${total}`
+        if (total) text += `\n${global.rpg.emoticon(lost)}${lost}: -${total}`
     }
     text += '\n\n🔖 ᴀᴅᴠᴇɴᴛᴜʀᴇ ʀᴇᴡᴀʀᴅ ʀᴇᴄᴇɪᴠᴇᴅ :'
     for (const rewardItem in rewards.reward) if (rewardItem in user) {
@@ -28,9 +32,10 @@ let handler = async (m, { conn, usedPrefix }) => {
         user[rewardItem] += total * 1
         if (total) text += `\n⮕ ${global.rpg.emoticon(rewardItem)}${rewardItem}: ${total}`
     }
-    conn.sendButton(m.chat, `*–––––『 ADVENTURE 』–––––*`, 
-    text.trim(), './media/adventure.jpg', [
-[`ᴏᴋ 👌`, `${usedPrefix}ok`]
+    text += '\n\n========================='
+    conn.sendButton(m.chat, `*––––『 ADVENTURE 』––––*`, text.trim(), './media/adventure.jpg', [
+[`ᴅᴀɪʟʏ`, `${usedPrefix}daily`],
+[`ᴍᴏɴᴛʜʟʏ`, `${usedPrefix}monthly`]
 ], m, {asLocation: true})
     user.lastadventure = new Date * 1
 }

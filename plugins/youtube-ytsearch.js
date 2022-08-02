@@ -9,15 +9,22 @@ ${usedPrefix + command} <name>
 ★ ᴇxᴀᴍᴩʟᴇ:
 ${usedPrefix + command} bolenath ji`
   const { video, channel } = await youtubeSearch(text)
+  const listSections = []
   let teks = [...video, ...channel].map(v => {
     switch (v.type) {
-      case 'video': return `
+      case 'video': {
+        listSections.push([`${v.title}`, [
+          ['Video 🎥', `${usedPrefix}ytv ${v.url} yes`, `download ${v.title} (${v.url})`],
+          ['Audio 🎧', `${usedPrefix}yta ${v.url} yes`, `download ${v.title} (${v.url})`]
+        ]])
+        return `
 🔖 ᴛɪᴛʟᴇ: *${v.title}*
 🔗 ᴜʀʟ: ${v.url}
 ⌛ ᴅᴜʀᴀᴛɪᴏɴ: ${v.durationH}
 📡 ᴩᴜʙʟɪsʜᴇᴅ: ${v.publishedTime}
 👀️ ᴠɪᴇᴡs: ${v.view}
       `.trim()
+      }
       case 'channel': return `
 📌 *${v.channelName}* (${v.url})
 🧑‍🤝‍🧑 _${v.subscriberH} (${v.subscriber}) Subscriber_

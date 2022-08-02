@@ -41,9 +41,10 @@ ${usedPrefix + command} [type]
 
 ★ ᴇxᴀᴍᴩʟᴇ:
 ${usedPrefix + command} potion
+===========================
 `.trim(), `./media/lb.jpg`, [
 [`✉️ ᴇxᴩ`, `${usedPrefix + command} exp`],
-[`🌌 ʟɪᴍɪᴛ`, `${usedPrefix + command} limit`]
+[`🎳 ʟɪᴍɪᴛ`, `${usedPrefix + command} limit`]
 ], m, {asLocation: true})
   let page = isNumber(args[1]) ? Math.min(Math.max(parseInt(args[1]), 0), getPage(type)) : 0
   let sortedItem = users.map(toNumber(type)).sort(sort(type))
@@ -62,6 +63,7 @@ ${usedPrefix + command} ${type} [number]
 
 ★ ᴇxᴀᴍᴩʟᴇ:
 ${usedPrefix + command} ${type} 5
+===========================
 `.trim(), `./media/gblb.jpg`, [
 [`ᴛᴏᴩ 5️⃣0️⃣`, `${usedPrefix + command} ${type} 9`],
 [`ᴛᴏᴩ 1️⃣0️⃣0️⃣`, `${usedPrefix + command} ${type} 19`]

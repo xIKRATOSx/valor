@@ -11,6 +11,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴄʟᴀɪᴍᴇᴅ ᴛᴏᴅᴀʏ ʀᴇᴡᴀʀᴅs﹗ᴩʟᴇᴀsᴇ ᴡᴀɪᴛ ᴛɪʟʟ ᴄᴏᴏʟᴅᴏᴡɴ ғɪɴɪsʜ.
 
 *⏱️ ${((user.lastclaim + cooldown) - new Date()).toTimeString()}*
+
+===========================
 `.trim(), `./media/cooldown.jpg`, [
 [`ᴏᴋ 👌`, `${usedPrefix}ok`]
 ], m, {asLocation: true})
@@ -23,6 +25,7 @@ let handler = async (m, { conn, usedPrefix }) => {
   conn.sendButton(m.chat, `*––––『 DAILY REWARD 』––––*`, `
 🔖 ᴅᴀɪʟʏ ʀᴇᴡᴀʀᴅ ʀᴇᴄᴇɪᴠᴇᴅ :
 ${text}
+===========================
 `.trim(), `./media/daily.jpg`, [
 [`ᴏᴋ 👌`, `${usedPrefix}ok`]
 ], m, {asLocation: true})

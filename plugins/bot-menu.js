@@ -6,11 +6,21 @@ import { plugins } from '../lib/plugins.js'
 import moment from 'moment-timezone'
 let tags = {}
 const defaultMenu = {
-  before: `%readmore`.trimStart(),
+  before: `
+===========================
+🧑🏻‍🏫 ɴᴀᴍᴇ: *%name*
+🎳 ʟɪᴍɪᴛ: *%limit*
+🎗️ ʀᴏʟᴇ: *%role*
+🎖️ ʟᴇᴠᴇʟ: *%level* ﹙%totalexp / %maxexp﹚
+☕ ᴛᴏᴛᴀʟ xᴩ: *%exp*
+〽️ ᴩʀᴇғɪx: *%p*
+===========================
+*⇓ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ʟɪsᴛᴇᴅ ʙᴇʟᴏᴡ ⇓*
+%readmore`.trimStart(),
   header: '╭─ *〘 %category 〙*\n│',
     body: '├> %cmd %islimit %isPremium',
   footer: '│\n╰────˧\n',
-   after: `===========================\n® ᴠᴀʟᴏʀ-ʙᴏᴛ © ᴠ%version`,
+   after: `===========================\n© ᴠᴀʟᴏʀ-ʙᴏᴛ ® ᴠ%version`,
 }
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
   try {
@@ -111,13 +121,9 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
     const menu = './media/menu.jpg'
     const valor = './media/valor.jpg'
-    conn.sendButton(m.chat, `*–––––––『 MENU 』–––––––*
-
-${wish()}, ${name}
-
-*⇓ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ʟɪsᴛᴇᴅ ʙᴇʟᴏᴡ ⇓*`, text.trim(), `${timeimg()}`, [
-      ['ʙᴏᴛ ɪɴғᴏ', `${_p}botinfo`],
-      ['ᴩʀᴏғɪʟᴇ', `${_p}profile`]
+    conn.sendButton(m.chat, `${wish()}﹗`, text.trim(), `${timeimg()}`, [
+      ['ʙᴏᴛ ɪɴғᴏ', `${_p}info`],
+      ['ɪɴᴠᴇɴᴛᴏʀʏ', `${_p}inventory`]
     ], m, {asLocation: true})
   } catch (e) {
     conn.reply(m.chat, 'Sorry, something is error in menu.js', m)
@@ -126,7 +132,7 @@ ${wish()}, ${name}
 }
 handler.help = ['menu']
 handler.tags = ['Bot']
-handler.command = /^(menu|help|valor|command|commands)$/i
+handler.command = /^(menu|help|valor|cmd|cmds|command|commands|profile|pf)$/i
 
 handler.exp = 3
 

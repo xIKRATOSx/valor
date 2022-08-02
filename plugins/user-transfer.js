@@ -39,7 +39,7 @@ const items = [
 ]
 let confirmation = {}
 async function handler(m, { conn, args, usedPrefix, command, __dirname }) {
-    if (confirmation[m.sender]) return m.reply('Kamu sedang melakukan transfer!')
+    if (confirmation[m.sender]) return m.reply('ᴡᴀɪᴛ ғᴏʀ ᴛɪᴍᴇᴏᴜᴛ ᴏʀ ᴄᴏᴍᴩʟᴇᴛᴇ ᴩʀᴇᴠɪᴏᴜs ᴛʀᴀɴsғᴇʀ ʙᴇғᴏʀᴇ ᴩʀᴏᴄᴇᴇᴅ ɴᴇxᴛ ᴛʀᴀɴsғᴇʀ﹗')
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
     let user = db.data.users[m.sender]
     const tfitems = Object.keys(tfinventory.tfitems).map(v => user[v] && `⮕ ${global.rpg.emoticon(v)} ${v}: ${user[v]}`).filter(v => v).join('\n').trim()
@@ -55,7 +55,6 @@ ${tfcrates}` : ''}${tfpets ? `
 ${tfpets}` : ''}
 
 ===========================
-💁🏻‍♂ ᴛɪᴩ :
 ⮕ ᴛʀᴀɴsғᴇʀ ᴛᴏ ᴜsᴇʀ:
 ${usedPrefix}${command} [type] [value] @user
 
@@ -69,12 +68,11 @@ ${usedPrefix}${command} money 999 @${_package.name}
 ], m, {asLocation: true})
     const count = Math.min(Number.MAX_SAFE_INTEGER, Math.max(1, (isNumber(args[1]) ? parseInt(args[1]) : 1))) * 1
     let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : args[2] ? (args[2].replace(/[@ .+-]/g, '') + '@s.whatsapp.net') : ''
-    if (!who) return m.reply('Tag salah satu, atau ketik Nomernya!!')
-    if (!(who in global.db.data.users)) return m.reply(`User ${who} not in database`)
+    if (!who) return m.reply('Tag one, or type in the number!!!')
+    if (!(who in db.data.users)) return m.reply(`User ${who} not in database`)
     if (user[type] * 1 < count) return conn.sendButton(m.chat, `*–『 INSUFFICIENT CREDIT 』–*`, `ʏᴏᴜ ɴᴇᴇᴅ ᴇxᴛʀᴀ *${count - user[type]}* ${rpg.emoticon(type)}${type}${special(type)} ᴛᴏ ᴛʀᴀɴsғᴇʀ.
 ʏᴏᴜ/'ᴠᴇ *${user[type]}* ${rpg.emoticon(type)}${type}${special(type)} ɪɴ ʙᴀɢ.
-–––––––––––––––––––––––––
-💁🏻‍♂ ᴛɪᴩ :
+===========================
 ᴏᴩᴇɴ ᴄʀᴀᴛᴇs & ᴄᴏʟʟᴇᴄᴛ ʀᴇᴡᴀʀᴅs.
 ⮕ ᴛᴏ ᴏᴩᴇɴ ᴄʀᴀᴛᴇs:
 .open crate
@@ -87,7 +85,7 @@ ${usedPrefix}${command} money 999 @${_package.name}
 ${usedPrefix}transfer ${type}${special(type)} ${count - user[type]} @${conn.getName(m.sender)}`]
 ], m, { asLocation: true })
     let confirm = `
-Are you sure you want to transfer *${count}* ${rpg.emoticon(type)}${type}${special(type)} to *@${(who || '').replace(/@s\.whatsapp\.net/g, '')}*
+ᴀʀᴇ ʏᴏᴜ sᴜʀᴇ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴛʀᴀɴsғᴇʀ *${count}* ${rpg.emoticon(type)}${type}${special(type)} ᴛᴏ *@${(who || '').replace(/@s\.whatsapp\.net/g, '')}﹖*
 
 ᴛɪᴍᴇᴏᴜᴛ: *30 sᴇᴄ*
 `.trim()
@@ -113,8 +111,8 @@ handler.before = async (m, { conn }) => {
     if (!m.text) return
     let { timeout, sender, message, to, type, count } = confirmation[m.sender]
     if (m.id === message.id) return
-    let user = global.db.data.users[sender]
-    let _user = global.db.data.users[to]
+    let user = db.data.users[sender]
+    let _user = db.data.users[to]
     if (/no?/g.test(m.text.toLowerCase())) {
         clearTimeout(timeout)
         delete confirmation[sender]
@@ -130,7 +128,7 @@ handler.before = async (m, { conn }) => {
         _user[type] += count * 1
         if (previous > user[type] * 1 && _previous < _user[type] * 1) conn.sendButton(m.chat, `*––––『 TRANSFERRED 』––––*`, `sᴜᴄᴄᴇssғᴜʟʟʏ ᴛʀᴀɴsғᴇʀ *${count}* ${rpg.emoticon(type)}${type}${special(type)} ᴛᴏ *@${(to || '').replace(/@s\.whatsapp\.net/g, '')}*`, './media/transferred.jpg',
 [
-[`ɪɴᴠᴇɴᴛᴏʀʏ`, `/inventory`]
+[`ᴏᴋ 👌`, `${usedPrefix}ok`]
 ], m, { mentions: [to], asLocation: true })
         else {
             user[type] = previous

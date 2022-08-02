@@ -53,7 +53,7 @@ let handler = async (m, { conn, usedPrefix, __dirname, text, command }) => {
   let old = performance.now()
   let neww = performance.now()
   let speed = neww - old
-    conn.sendHydrated(m.chat, `*––––––『 BOT INFO 』––––––*`, `
+    conn.sendHydrated(m.chat, `*–––––『 BOT INFO 』–––––*`, `
 🤖 ɴᴀᴍᴇ: ${_package.name}
 🧩 ᴠᴇʀsɪᴏɴ: ${_package.version}
 📚 ʟɪʙʀᴀʀʏ: ${_package.description}
@@ -74,14 +74,16 @@ let handler = async (m, { conn, usedPrefix, __dirname, text, command }) => {
 ⮕ ${groupsIn.length - groupsIn.length} - Groups Left
 ⮕ ${chats.length - groupsIn.length} - Personal Chats
 ⮕ ${chats.length} - Total Chats
-`.trim(), `./media/botinfo.jpg`, 'https://dineshvalor.github.io/valor', 'ʙᴏᴛ sᴄʀɪᴩᴛ', null, null, [
+
+===========================
+`.trim(), `./media/botinfo.jpg`, 'https://dineshvalor.github.io/valor', 'sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', null, null, [
 [`ᴏᴡɴᴇʀ`, `${usedPrefix}owner`],
 [`ᴅᴏɴᴀᴛᴇ`, `${usedPrefix}donate`]
 ], m, {asLocation: true})
 }
-handler.help = ['botinfo']
+handler.help = ['info']
 handler.tags = ['Bot']
-handler.command = /^(botinfo|infobot|bot|info|bi|ib)$/i
+handler.command = /^(botinfo|infobot|bot|info|bi|ib|source|sourcecode|sc|status|botstatus|bs|statusbot|sb|speed|ping)$/i
 
 export default handler
 

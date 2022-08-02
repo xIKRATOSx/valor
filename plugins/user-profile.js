@@ -13,25 +13,25 @@ let handler = async (m, { conn, usedPrefix, text, command }) => {
         enabled: !plugin.disabled,
       }
     })
-    conn.sendButton(m.chat, `*––––––『 PROFILE 』––––––*`, `
-🧑🏻‍🏫 ɴᴀᴍᴇ: *${name}*
-🎳 ʟɪᴍɪᴛ: *${limit}*
-🎗️ ʀᴏʟᴇ: *${role}*
-🎖️ ʟᴇᴠᴇʟ: *${level}* ﹙${exp - min} / ${xp}﹚
-☕ ᴛᴏᴛᴀʟ xᴩ: *${exp}*
-〽️ ᴩʀᴇғɪx: *${usedPrefix}*
+    //conn.sendButton(m.chat, `*––––––『 PROFILE 』––––––*`, `
+//🧑🏻‍🏫 ɴᴀᴍᴇ: *${name}*
+//🎳 ʟɪᴍɪᴛ: *${limit}*
+//🎗️ ʀᴏʟᴇ: *${role}*
+//🎖️ ʟᴇᴠᴇʟ: *${level}* ﹙${exp - min} / ${xp}﹚
+//☕ ᴛᴏᴛᴀʟ xᴩ: *${exp}*
+//〽️ ᴩʀᴇғɪx: *${usedPrefix}*
 
-===========================
-★ ʟᴇᴠᴇʟ ᴜᴩ:
-${usedPrefix}levelup
-`.trim(), `./media/profile.jpg`, [
-[`ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ`, `${usedPrefix}leaderboard`],
-[`ɪɴᴠᴇɴᴛᴏʀʏ`, `${usedPrefix}inventory`]
-], m, {asLocation: true})
+//===========================
+//★ ʟᴇᴠᴇʟ ᴜᴩ:
+//${usedPrefix}levelup
+//`.trim(), `./media/profile.jpg`, [
+//[`ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ`, `${usedPrefix}leaderboard`],
+//[`ɪɴᴠᴇɴᴛᴏʀʏ`, `${usedPrefix}inventory`]
+//], m, {asLocation: true})
 }
 
-handler.help = ['profile']
-handler.tags = ['User']
-handler.command = /^(profile|pf|upf|userpf|userprofile|up)$/i
+//handler.help = ['profile']
+//handler.tags = ['User']
+//handler.command = /^(profile|pf|upf|userpf|userprofile|up)$/i
 
 export default handler

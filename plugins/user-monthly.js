@@ -15,6 +15,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴄʟᴀɪᴍᴇᴅ ᴍᴏɴᴛʜʟʏ ʀᴇᴡᴀʀᴅs﹗ᴩʟᴇᴀsᴇ ᴡᴀɪᴛ ᴛɪʟʟ ᴄᴏᴏʟᴅᴏᴡɴ ғɪɴɪsʜ.
 
 *⏱️ ${((user.lastmonthly + cooldown) - new Date()).toTimeString()}*
+
+===========================
 `.trim(), `./media/cooldown.jpg`, [
 [`ᴏᴋ 👌`, `${usedPrefix}ok`]
 ], m, {asLocation: true})
@@ -27,6 +29,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 `*––––––『 MONTHLY 』––––––*`, `
 🔖 ᴍᴏɴᴛʜʟʏ ʀᴇᴡᴀʀᴅ ʀᴇᴄᴇɪᴠᴇᴅ :
 ${text}
+===========================
 `.trim(), `./media/monthly.jpg`, [
 [`ᴏᴋ 👌`, `${usedPrefix}ok`]
 ], m, {asLocation: true})

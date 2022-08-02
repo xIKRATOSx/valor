@@ -7,9 +7,10 @@ import { promises } from 'fs'
 
 const inventory = {
   others: {
+    limit: true,
     health: true,
     money: true,
-    exp: true,
+    exp: true
   },
   items: {
     potion: true,
@@ -99,6 +100,8 @@ const inventory = {
 let handler = async (m, { conn, usedPrefix, __dirname}) => {
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
   let user = db.data.users[m.sender]
+  // Make sure role is correct
+  user.role = global.rpg.role(user.level).name
   const tools = Object.keys(inventory.tools).map(v => user[v] && `⮕ ${global.rpg.emoticon(v)}${v}: ${typeof inventory.tools[v] === 'object' ? inventory.tools[v][user[v]?.toString()] : `Level(s) ${user[v]}`}`).filter(v => v).join('\n').trim()
   const items = Object.keys(inventory.items).map(v => user[v] && `⮕ ${global.rpg.emoticon(v)} ${v}: ${user[v]}`).filter(v => v).join('\n').trim()
   const crates = Object.keys(inventory.crates).map(v => user[v] && `⮕ ${global.rpg.emoticon(v)} ${v}: ${user[v]}`).filter(v => v).join('\n').trim()
@@ -125,18 +128,10 @@ ${pets}` : ''}${cooldowns ? `
 ${cooldowns}` : ''}
 
 ===========================
-★ ᴄʟᴀɪᴍ ʀᴇᴡᴀʀᴅs:
-→ adventure (claim per 5mins)
-${usedPrefix}adventure
-→ daily (claim per day)
-${usedPrefix}daily
-→ monthly (claim per month)
-${usedPrefix}monthly
 `
-conn.sendButton(m.chat, `*–––––『 INVENTORY 』–––––*`, caption.trim(), `./media/inventory.jpg`, [
-[`ᴀᴅᴠᴇɴᴛᴜʀᴇ`, `${usedPrefix}adventure`],
-[`ᴅᴀɪʟʏ`, `${usedPrefix}daily`],
-[`ᴍᴏɴᴛʜʟʏ`, `${usedPrefix}monthly`]
+conn.sendButton(m.chat, `*––––『 INVENTORY 』––––*`, caption.trim(), `./media/inventory.jpg`, [
+[`ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ`, `${usedPrefix}leaderboard`],
+[`ᴀᴅᴠᴇɴᴛᴜʀᴇ`, `${usedPrefix}adventure`]
 ], m, {asLocation: true})
 }
 handler.help = ['inventory']

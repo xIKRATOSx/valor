@@ -2,6 +2,6 @@
   "name": "valor-bot",
   "description": "The Valor Bot for WhatsApp",
   "repository": "https://github.com/DineshValor/valor",
-  "logo": "https://raw.githubusercontent.com/DineshValor/valor/bot/docs/images/logo-l.jpg",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
   "keywords": ["game", "api", "chat", "bot", "automation", "device", "web", "websocket", "whatsapp", "user", "sticker", "termux", "group", "multi", "md", "valor", "baileys", "dineshvalor"]
 }

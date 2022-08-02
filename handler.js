@@ -11,7 +11,9 @@ import Helper from './lib/helper.js'
 import db, { loadDatabase } from './lib/database.js'
 import Queque from './lib/queque.js'
 
-// const { proto } = (await import('@adiwajshing/baileys')).default
+/** @type {import('@adiwajshing/baileys')} */
+const { getContentType, proto } = (await import('@adiwajshing/baileys')).default
+
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 /**
  * Handle messages upsert
@@ -524,7 +526,7 @@ export async function handler(chatUpdate) {
                             for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
                                 let data = (await this.onWhatsApp(jid))[0] || {}
                                 if (data.exists)
-                                    m.reply(`*Plugin:* ${m.plugin}\n*Sender:* ${m.sender}\n*Chat:* ${m.chat}\n*Command:* ${usedPrefix + command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\``.trim(), data.jid)
+                                    m.reply(`*Plugin:* ${m.plugin}\n*Sender:* ${m.sender}\n*Chat:* ${m.chat}\n*Command:* ${usedPrefix}${command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\``.trim(), data.jid)
                             }
                         m.reply(text)
                     }
@@ -671,43 +673,48 @@ export async function groupsUpdate(groupsUpdate) {
  * @param {import('@adiwajshing/baileys').BaileysEventMap<unknown>['messages.delete']} message 
  */
 export async function deleteUpdate(message) {
-    if (message.keys && Array.isArray(message.keys)) {
-        try {
-            for (const key of message.keys) {
-                if (key.fromMe) continue
-                const msg = Connection.store.loadMessage(key.id)
-                if (!msg) continue
-                let chat = db.data.chats[msg.key.remoteJid]
-                if (!chat || chat.delete) continue
-                const participant = msg.participant || msg.key.participant || msg.key.remoteJid
-                await this.reply(msg.key.remoteJid, `
-Detected @${participant.split`@`[0]} deleted message
-To turn off this feature, type
-*.enable delete*
-`.trim(), msg, {
-                    mentions: [participant]
-                })
-                this.copyNForward(msg.key.remoteJid, msg).catch(e => console.log(e, msg))
+
+    if (Array.isArray(message.keys) && message.keys.length > 0) {
+        const tasks = await Promise.allSettled(message.keys.map(async (key) => {
+            if (key.fromMe) return
+            const msg = this.loadMessage(key.remoteJid, key.id) || this.loadMessage(key.id)
+            if (!msg || !msg.message) return
+            let chat = db.data.chats[key.remoteJid]
+            if (!chat || chat.delete) return
+
+            // if message type is conversation, convert it to extended text message because if not, it will throw an error
+            const mtype = getContentType(msg.message)
+            if (mtype === 'conversation') {
+                msg.message.extendedTextMessage = { text: msg.message[mtype] }
+                delete msg.message[mtype]
             }
-        } catch (e) {
-            console.error(e)
-        }
+
+            const participant = msg.participant || msg.key.participant || msg.key.remoteJid
+
+            await this.reply(key.remoteJid, `
+        ᴅᴇᴛᴇᴄᴛᴇᴅ @${participant.split`@`[0]} ᴅᴇʟᴇᴛᴇᴅ ᴍᴇssᴀɢᴇ
+ᴛᴏ ᴛᴜʀɴ ᴏғғ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ, ᴛʏᴩᴇ
+*.on delete*
+`.trim(), msg, { mentions: [participant] })
+            return await this.copyNForward(key.remoteJid, msg).catch(e => console.log(e, msg))
+        }))
+        tasks.map(t => t.status === 'rejected' && console.error(t.reason))
     }
 }
 
 
 global.dfail = (type, m, conn) => {
     let msg = {
-        rowner: 'This command can only be used by _*OWNER*_',
-        owner: 'This command can only be used by _*Owner Bot*_!',
-        mods: 'This command can only be used by _*Moderator*_ !',
-        premium: 'This command is only for _*Premium Members*_!',
-        group: 'This command can only be used in *Groups*!',
-        private: 'This command can only be used in *Private Chat*!',
-        admin: 'This command is only for *Group Admin*!',
-        botAdmin: 'Make bot as *Admin* to use this command!',
-        unreg: 'Please register to use this feature by typing:\n\n*#register name.age*\n\nContoh: *#register Valor.23*',
-        restrict: 'This feature is *disabled*!'
+        rowner: 'ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ʙʏ _*OWNER*_',
+        owner: 'ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ʙʏ _*Owner Bot*_!',
+        mods: 'ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ʙʏ _*Moderator*_ !',
+        premium: 'ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪs ᴏɴʟʏ ғᴏʀ _*Premium Members*_!',
+        group: 'ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ɪɴ *Groups*!',
+        private: 'ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ɪɴ *Private Chat*!',
+        admin: 'ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪs ᴏɴʟʏ ғᴏʀ *Group Admin*!',
+        botAdmin: 'ᴍᴀᴋᴇ ʙᴏᴛ ᴀs *Admin* ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ﹗',
+        unreg: 'ᴩʟᴇᴀsᴇ ʀᴇɢɪsᴛᴇʀ ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ ʙʏ ᴛʏᴩɪɴɢ:\n\n*#register name.age*\n\n★ ᴇxᴀᴍᴩʟᴇ: *#register Valor.23*',
+        restrict: 'ᴛʜɪs ғᴇᴀᴛᴜʀᴇ ɪs *disabled*!'
     }[type]
     if (msg) return m.reply(msg)
 }

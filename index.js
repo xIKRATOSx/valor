@@ -8,18 +8,6 @@ import { watchFile, unwatchFile } from 'fs'
 import cfonts from 'cfonts';
 import { createInterface } from 'readline'
 import Helper from './lib/helper.js'
-import express from 'express'
-
-const app = express()
-const port = 3000
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
 
 // https://stackoverflow.com/a/50052194
 const __dirname = dirname(fileURLToPath(import.meta.url))

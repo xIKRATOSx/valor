@@ -19,7 +19,7 @@ let handler = async(m, { conn, usedPrefix, text, participants }) => {
 }
 handler.help = ['tagall <text>']
 handler.tags = ['Group']
-handler.command = /^(tagall|all)$/i
+handler.command = /^(tagall|all|everyone|saare|suno)$/i
 
 handler.group = true
 handler.limit = false

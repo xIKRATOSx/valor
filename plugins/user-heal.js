@@ -32,14 +32,13 @@ ${usedPrefix}transfer potion ${count - user.potion} @${conn.getName(m.sender)}`]
 ], m, {asLocation: true})
     user.potion -= count * 1
     user.health += heal * count
-    conn.sendButton(m.chat, `*––––『 FULL RECOVER 』––––*`, `
+    conn.sendButton(m.chat, `*––『 HEALTH RECOVER 』––*`, `
 sᴜᴄᴄᴇssғᴜʟʟʏ *${count} 🥤ᴩᴏᴛɪᴏɴ* ᴜsᴇ ᴛᴏ ʀᴇᴄᴏᴠᴇʀ ʜᴇᴀʟᴛʜ.
 
 ===========================
 `.trim(), './media/healthrecover.jpg',
 [
-[`ᴀᴅᴠᴇɴᴛᴜʀᴇ`, `${usedPrefix}adventure`],
-[`ᴏᴋ 👌`, `${usedPrefix}ok`]
+[`ᴀᴅᴠᴇɴᴛᴜʀᴇ`, `${usedPrefix}adventure`]
 ], m, { asLocation: true })
 }
 

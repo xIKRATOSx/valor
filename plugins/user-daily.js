@@ -31,7 +31,7 @@ ${text}
 ], m, {asLocation: true})
   user.lastclaim = new Date * 1
 }
-handler.help = ['dailyclaim']
+handler.help = ['dailyreward']
 handler.tags = ['User']
 handler.command = /^(daily|dr|drewar(d|ds)|dailyrewar(d|ds)|dailyclaim|dc|dclaim)$/i
 

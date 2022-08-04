@@ -7,6 +7,8 @@ let handler = async (m, { conn, usedPrefix }) => {
 ʏᴏᴜʀ ʜᴇᴀʟᴛʜ ɪs ʙᴇʟᴏᴡ *80*﹗ᴩʟᴇᴀsᴇ ʜᴇᴀʟ ❤ ғɪʀsᴛ ᴛᴏ ᴀᴅᴠᴇɴᴛᴜʀᴇ ᴀɢᴀɪɴ.
 
 ===========================
+★ ᴛᴏ ʜᴇᴀʟ:
+${usedPrefix}heal
 `.trim(), `./media/lowhealth.jpg`, [
 [`ʜᴇᴀʟ ❤`, `${usedPrefix}heal`]
 ], m, {asLocation: true})

@@ -35,7 +35,7 @@ ${text}
 ], m, {asLocation: true})
     user.lastmonthly = new Date * 1
 }
-handler.help = ['monthlyclaim']
+handler.help = ['monthlyreward']
 handler.tags = ['User']
 handler.command = /^(monthly|mr|mrewar(d|ds)|monthlyrewar(d|ds)|monthlyclaim|mc|mclaim)$/i
 

@@ -11,8 +11,8 @@ const defaultMenu = {
 🧑🏻‍🏫 ɴᴀᴍᴇ: *%name*
 🎳 ʟɪᴍɪᴛ: *%limit*
 🎗️ ʀᴏʟᴇ: *%role*
-🎖️ ʟᴇᴠᴇʟ: *%level* ﹙%totalexp / %maxexp﹚
-☕ ᴛᴏᴛᴀʟ xᴩ: *%exp*
+🎖️ ʟᴇᴠᴇʟ: *%level* ﹙%exp / %maxexp﹚
+☕ ᴛᴏᴛᴀʟ xᴩ: *%totalexp*
 〽️ ᴩʀᴇғɪx: *%p*
 ===========================
 *⇓ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ʟɪsᴛᴇᴅ ʙᴇʟᴏᴡ ⇓*

@@ -18,7 +18,7 @@ ${usedPrefix + command} bolenath ji`
 📡 ᴩᴜʙʟɪsʜᴇᴅ: ${publishedTime}
 ⌛ ᴅᴜʀᴀᴛɪᴏɴ: ${durationH}
 👀️ ᴠɪᴇᴡs: ${viewH}
-`.trim(), thumbnail, url, '📺 ɢᴏ ᴛᴏ ʏᴏᴜᴛᴜʙᴇ﹗', null, null, [
+`.trim(), thumbnail + '.png', url, '📺 ɢᴏ ᴛᴏ ʏᴏᴜᴛᴜʙᴇ﹗', null, null, [
 ['ᴀᴜᴅɪᴏ 🎧', `${usedPrefix}yta ${url} yes`],
 ['ᴠɪᴅᴇᴏ 🎥', `${usedPrefix}ytv ${url} yes`],
 ['ʏᴏᴜᴛᴜʙᴇ sᴇᴀʀᴄʜ 🔎', `${usedPrefix}yts ${url}`]

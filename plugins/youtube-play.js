@@ -7,7 +7,7 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
 ${usedPrefix + command} <name/url>
 
 ★ ᴇxᴀᴍᴩʟᴇ:
-${usedPrefix + command} bolenath ji`
+${usedPrefix + command} Habibi song`
   let vid = (await youtubeSearch(text)).video[0]
   if (!vid) throw 'ᴀᴜᴅɪᴏ ᴏʀ ᴠɪᴅᴇᴏ ɴᴏᴛ ғᴏᴜɴᴅ﹗'
   let { title, description, thumbnail, videoId, durationH, viewH, publishedTime } = vid

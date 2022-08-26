@@ -18,9 +18,9 @@ const defaultMenu = {
 *⇓ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ʟɪsᴛᴇᴅ ʙᴇʟᴏᴡ ⇓*
 %readmore`.trimStart(),
   header: '╭─ *〘 %category 〙*\n│',
-    body: '├> %cmd %islimit %isPremium',
+    body: '├🇵🇰 %cmd %islimit %isPremium',
   footer: '│\n╰────˧\n',
-   after: `===========================\n© ᴠᴀʟᴏʀ-ʙᴏᴛ ® ᴠ%version`,
+   after: `===========================\n© Ikratos-Valor ® ᴠ%version`,
 }
 let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
   try {
@@ -143,7 +143,7 @@ const readMore = more.repeat(4001)
 
 function wish() {
     let wishloc = ''
-  const time = moment.tz('Asia/Kolkata').format('HH')
+  const time = moment.tz('Asia/Gujranwala').format('HH')
   wishloc = ('Hi')
   if (time >= 0) {
     wishloc = ('Night Rider')
@@ -164,7 +164,7 @@ function wish() {
 }
 function timeimg() {
     let imgloc = ''
-  const time = moment.tz('Asia/Kolkata').format('HH')
+  const time = moment.tz('Asia/Gujranwala').format('HH')
   imgloc = ('./media/menu.jpg')
   if (time >= 0) {
     imgloc = ('./media/midnight.jpg')

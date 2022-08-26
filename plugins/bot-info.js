@@ -16,8 +16,8 @@ let format = sizeFormatter({
   render: (literal, symbol) => `${literal} ${symbol}B`,
 })
 let handler = async (m, { conn, usedPrefix, __dirname, text, command }) => {
-    let date = moment.tz('Asia/Kolkata').format("dddd, Do MMMM, YYYY")
-    let time = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+    let date = moment.tz('Asia/Gujranwala').format("dddd, Do MMMM, YYYY")
+    let time = moment.tz('Asia/Gujranwala').format('HH:mm:ss')
     let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}
     let _uptime = process.uptime() * 1000
     let uptime = clockString(_uptime)
@@ -62,7 +62,7 @@ let handler = async (m, { conn, usedPrefix, __dirname, text, command }) => {
 📈 ᴅᴀᴛᴀʙᴀsᴇ: ${totalreg}
 
 📅 ᴅᴀᴛᴇ: ${date}
-⌚ ᴛɪᴍᴇ: ${time} ﹙ɢᴍᴛ +5:30﹚
+⌚ ᴛɪᴍᴇ: ${time} ﹙ɢᴍᴛ +5:00﹚
 
 💻 sᴇʀᴠᴇʀ ɪɴғᴏ :
 ⮕ ᴩɪɴɢ: ${speed} ᴍs
@@ -76,7 +76,7 @@ let handler = async (m, { conn, usedPrefix, __dirname, text, command }) => {
 ⮕ ${chats.length} - Total Chats
 
 ===========================
-`.trim(), `./media/botinfo.jpg`, 'https://dineshvalor.github.io/valor', 'sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', null, null, [
+`.trim(), `./media/botinfo.jpg`, 'https://github.com/xIKRATOSx/valor', 'sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', null, null, [
 [`ᴏᴡɴᴇʀ`, `${usedPrefix}owner`],
 [`ᴅᴏɴᴀᴛᴇ`, `${usedPrefix}donate`]
 ], m, {asLocation: true})

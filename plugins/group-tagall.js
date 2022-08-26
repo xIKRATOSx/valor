@@ -1,5 +1,5 @@
 import db from '../lib/database.js'
-const cooldown = 120000
+const cooldown = 120
 let handler = async(m, { conn, usedPrefix, text, participants }) => {
     let user = db.data.users[m.sender]
     let timers = (cooldown - (new Date - user.lasttag))
